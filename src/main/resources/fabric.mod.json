@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "urach",
+	"version": "${version}",
+	"name": "Urach",
+	"description": "A minecraft mod that revamps the whole minecraft enchantment system",
+	"authors": [
+		"Wexyz"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/urach/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.wexyz.urach.Urach"
+		],
+		"fabric-datagen": [
+			"com.wexyz.urach.UrachDataGenerator"
+		],
+		"client": [
+			"com.wexyz.urach.UrachClient"
+		]
+	},
+	"mixins": [
+		"urach.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.17.2",
+		"minecraft": "~1.21.9",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
