@@ -1,5 +1,7 @@
 package com.wexyz.urach;
 
+import com.wexyz.urach.enchantment.ModEnchantmentEffects;
+import com.wexyz.urach.enchantment.ModEnchantments;
 import com.wexyz.urach.item.ModItems;
 import net.fabricmc.api.ModInitializer;
 
@@ -15,7 +17,7 @@ public class Urach implements ModInitializer {
 	public void onInitialize() {
 
         ModItems.registerModItems();
-
+        ModEnchantmentEffects.registerEnchantmentEffects();
 		LOGGER.info("Hello Fabric world!");
 	}
 }
