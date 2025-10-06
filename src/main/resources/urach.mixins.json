@@ -2,9 +2,13 @@
 	"required": true,
 	"package": "com.wexyz.urach.mixin",
 	"compatibilityLevel": "JAVA_21",
-	"mixins": [
-		"ExampleMixin"
-	],
+        "mixins": [
+                "ExampleMixin",
+                "EnchantmentHelperMixin",
+                "EnchantCommandMixin",
+                "ItemGroupsMixin",
+                "RegistryEntryReferenceArgumentTypeMixin"
+        ],
 	"injectors": {
 		"defaultRequire": 1
 	},
