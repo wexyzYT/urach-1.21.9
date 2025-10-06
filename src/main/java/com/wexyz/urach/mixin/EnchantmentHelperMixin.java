@@ -1,20 +1,18 @@
 package com.wexyz.urach.mixin;
 
-import com.wexyz.urach.Urach;
+import com.wexyz.urach.enchantment.UrachEnchantmentFilters;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentLevelEntry;
-import net.minecraft.registry.RegistryKey;
+import net.minecraft.item.ItemStack;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Stream;
 
 @Mixin(EnchantmentHelper.class)
@@ -27,7 +25,7 @@ public abstract class EnchantmentHelperMixin {
         }
 
         List<EnchantmentLevelEntry> filtered = entries.stream()
-                .filter(entry -> urach$isAllowed(entry.enchantment()))
+                .filter(entry -> UrachEnchantmentFilters.isAllowed(entry.enchantment()))
                 .toList();
 
         if (filtered.size() != entries.size()) {
@@ -43,18 +41,11 @@ public abstract class EnchantmentHelperMixin {
         }
 
         List<EnchantmentLevelEntry> filtered = entries.stream()
-                .filter(entry -> urach$isAllowed(entry.enchantment()))
+                .filter(entry -> UrachEnchantmentFilters.isAllowed(entry.enchantment()))
                 .toList();
 
         if (filtered.size() != entries.size()) {
             cir.setReturnValue(filtered);
         }
-    }
-
-    private static boolean urach$isAllowed(RegistryEntry<Enchantment> enchantmentEntry) {
-        Optional<RegistryKey<Enchantment>> keyOptional = enchantmentEntry.getKey();
-        return keyOptional
-                .map(key -> Urach.MOD_ID.equals(key.getValue().getNamespace()))
-                .orElse(false);
     }
 }
