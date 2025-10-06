@@ -15,14 +15,14 @@ import java.util.stream.Stream;
 @Mixin(ItemGroups.class)
 public abstract class ItemGroupsMixin {
     @Inject(method = "method_59969", at = @At("HEAD"), cancellable = true)
-    private static void urach$filterAllLevelBooks(RegistryEntry<Enchantment> enchantmentEntry, CallbackInfoReturnable<Stream<ItemStack>> cir) {
+    private static void urach$filterAllLevelBooks(RegistryEntry.Reference enchantmentEntry, CallbackInfoReturnable<Stream> cir) {
         if (!UrachEnchantmentFilters.isAllowed(enchantmentEntry)) {
             cir.setReturnValue(Stream.empty());
         }
     }
 
     @Inject(method = "method_59972", at = @At("HEAD"), cancellable = true)
-    private static void urach$filterMaxLevelBooks(RegistryEntry<Enchantment> enchantmentEntry, CallbackInfoReturnable<ItemStack> cir) {
+    private static void urach$filterMaxLevelBooks(RegistryEntry.Reference enchantmentEntry, CallbackInfoReturnable<ItemStack> cir) {
         if (!UrachEnchantmentFilters.isAllowed(enchantmentEntry)) {
             cir.setReturnValue(ItemStack.EMPTY);
         }
